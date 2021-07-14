@@ -38,13 +38,15 @@ path_loss_list = np.array(path_loss_list)
 
 error = []
 for i in range(len(path_loss_list)):
-    error.append(mse(path_loss_list[i],Y[i], squared=False))
+    error.append(path_loss_list[i]-float(Y[i]))
    
 error.sort()
 error = np.array(error)
+MSE = mse(Y, path_loss)
+RMSE = math.sqrt(MSE)
 print("Error promedio: {}".format(np.mean(error)))
 print("Mediana del error: {}".format((error[67]+error[68])/2))
-
+print("Error RMS: {}".format(RMSE))
 #============== Graficos ==============#
 
 x_line = np.arange(min(x), max(x), 1)
@@ -89,12 +91,15 @@ path_loss_list = np.array(path_loss_list)
 
 error = []
 for i in range(len(path_loss_list)):
-    error.append(mse(path_loss_list[i],Y[i], squared=False))
+    error.append(path_loss_list[i]-float(Y[i]))
    
 error.sort()
-error = np.array(error)
+
+MSE = mse(Y, path_loss)
+RMSE = math.sqrt(MSE)
 print("Error promedio: {}".format(np.mean(error)))
 print("Mediana del error: {}".format((error[67]+error[68])/2))
+print("Error RMS: {}".format(RMSE))
 
 #============== Graficos ==============#
 

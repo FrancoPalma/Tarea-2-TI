@@ -40,14 +40,18 @@ path_loss_list = np.array(path_loss_list)
 
 #============== Calculo de error ==============#
 
-error = []
-for i in range(len(path_loss_list)):
-    error.append(mse(path_loss_list[i],Y[i], squared=False))
-   
-error.sort()
-error = np.array(error)
-print("Error promedio: {}".format(np.mean(error)))
-print("Mediana del error: {}".format((error[67]+error[68])/2))
+print("Caso antena 2.8")
+error_prom = []
+rmse = []
+for i in range(len(R)):
+    rmse.append(mse(PL28(R[i],lamb),Y[i], squared=False))
+    error_prom.append(PL28(R[i],lamb)- Y[i])
+
+error_prom.sort()
+print("Error promedio: {}".format(np.mean(error_prom)))
+print("RMSE: {}".format(np.mean(rmse)))
+print("Mediana del error: {}".format((error_prom[67]+error_prom[68])/2))
+
 
 #============== Graficos ==============#
 
@@ -91,15 +95,19 @@ path_loss_list = np.array(path_loss_list)
 
 
 #============== Calculo de error ==============#
+print("\n-------------------\n")
+print("Caso antena 4.7")
+error_prom = []
+rmse = []
+for i in range(len(R)):
+    rmse.append(mse(PL28(R[i],lamb),Y[i], squared=False))
+    error_prom.append(PL28(R[i],lamb)- Y[i])
 
-error = []
-for i in range(len(path_loss_list)):
-    error.append(mse(path_loss_list[i],Y[i], squared=False))
-   
-error.sort()
-error = np.array(error)
-print("Error promedio: {}".format(np.mean(error)))
-print("Mediana del error: {}".format((error[67]+error[68])/2))
+error_prom.sort()
+print("Error promedio: {}".format(np.mean(error_prom)))
+print("RMSE: {}".format(np.mean(rmse)))
+print("Mediana del error: {}".format((error_prom[67]+error_prom[68])/2))
+
 
 #============== Graficos ==============#
 

@@ -37,7 +37,7 @@ s = 0.002
 
 
 for i in range(len(R)):
-    aux_1 = []
+
     r = float(R[i])
     if(r <= r_bp):
         D = 1
@@ -45,9 +45,6 @@ for i in range(len(R)):
         D = r/r_bp
     PL = fun(s,r,D,lamb)
 
-    aux_1.append(PL)
-    aux = np.array(aux_1)
-    error.append(mse(aux,Y[i],squared=False))
 
     path_loss.append(PL)
 
@@ -79,6 +76,8 @@ plt.ylabel("Path-losses[dB]")
 plt.show()
 
 #============== Calculo de error ==============#
+for i in range(len(R)):
+    error.append(path_loss[i] -float(Y[i]))
 
 error.sort()   
 error = np.array(error)
@@ -115,7 +114,7 @@ for i in range(len(R)):
     PL = fun(s,r,D,lamb)
     aux.append(PL)
     aux = np.array(aux)
-    error.append(mse(aux,Y[i],squared=False))
+
     path_loss.append(PL)
     x.append(float(R[i]))
 
@@ -145,6 +144,9 @@ plt.ylabel("Path-losses[dB]")
 plt.show()
 
 #============== Calculo de error ==============#
+
+for i in range(len(R)):
+    error.append(path_loss[i] - float(Y[i]))
 
 error.sort()   
 error = np.array(error)
